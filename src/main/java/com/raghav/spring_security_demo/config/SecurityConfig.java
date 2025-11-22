@@ -36,11 +36,16 @@ public class SecurityConfig {
 //
 //        httpSecurity.authorizeHttpRequests(custHttp);
 
-        httpSecurity.csrf(customizer -> customizer.disable());
-        httpSecurity.authorizeHttpRequests(request -> request.anyRequest().authenticated());
-        httpSecurity.formLogin(Customizer.withDefaults());
-        httpSecurity.httpBasic(Customizer.withDefaults());
-        httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+//        httpSecurity.csrf(customizer -> customizer.disable());
+//        httpSecurity.authorizeHttpRequests(request -> request.anyRequest().authenticated());
+//        httpSecurity.formLogin(Customizer.withDefaults());
+//        httpSecurity.httpBasic(Customizer.withDefaults());
+//        httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+        httpSecurity.csrf(customizer -> customizer.disable())
+                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return httpSecurity.build();
     }
