@@ -59,10 +59,10 @@ public class SecurityConfig {
 
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("Raghav")
-                .password("Raghav@1234")
+                .password("1234")
                 .roles("USER")
                 .build();
 
-        return new InMemoryUserDetailsManager();
+        return new InMemoryUserDetailsManager(user);
     }
 }
