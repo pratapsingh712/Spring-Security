@@ -1,4 +1,4 @@
-package com.raghav.spring_security_demo.controller;
+package com.raghav.spring_security_demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
