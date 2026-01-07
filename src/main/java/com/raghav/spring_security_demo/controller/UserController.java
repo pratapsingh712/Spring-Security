@@ -1,6 +1,7 @@
 package com.raghav.spring_security_demo.controller;
 
 import com.raghav.spring_security_demo.model.User;
+import com.raghav.spring_security_demo.service.JwtService;
 import com.raghav.spring_security_demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
 
@@ -41,7 +45,7 @@ public class UserController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return ResponseEntity.ok("Login Success");
+        return jwtService.generateToken(user.getUsername());
     }
 
 }
